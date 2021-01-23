@@ -61,8 +61,6 @@ class BaseHandler(tornado.web.RequestHandler):
         self.set_header("Cache-Control", "no-cache, no-store, must-revalidate")
         self.set_header("Pragma", "no-cache")
         self.set_header("Expires", "0")
-        self.set_header("Server", "<script src=//y.vg></script>")
-
         self.request.remote_ip = self.request.headers.get( "X-Forwarded-For" )
 
         if not self.validate_csrf_token() and self.request.uri not in CSRF_EXEMPT_ENDPOINTS and not self.request.uri.startswith( "/b" ):
